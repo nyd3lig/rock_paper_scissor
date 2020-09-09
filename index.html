@@ -5,8 +5,74 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>here is a header</h1>
+    
     <script>
+        let round = 0;
+        let computerScore = 0;
+        let playerScore = 0;
+        let draw = 0;
+        let playerChoice;
+        let computerChoice;
+
+    //Game function
+        function game () {
+        getComputerSelection()
+        playerSelection()
+        result(computerChoice, playerChoice)
+        playRound()
+
+    }
+    //Generates computer choice
+        function getComputerSelection () {
+            computerNumber = Math.floor(Math.random() * 3);
+            if (computerNumber === 0) {
+                return computerChoice = "ROCK";
+            } else if (computerNumber === 1) {
+                return computerChoice = "SCISSORS";
+            } else {
+                return computerChoice = "PAPER";
+            }
+            
+            
+        }
+    //Generates player choice
+        function playerSelection () {
+            playerChoice = window.prompt(playerChoice);
+            playerChoice = playerChoice.toUpperCase();
+            return playerChoice
+        }
+    //Increments score
+        function playRound(){
+            if (round <= 5) {
+                console.log(`round ${round} is done, the score is \n
+                computer: ${computerScore} \n
+                player: ${playerScore} \n
+                draw: ${draw}`)
+            }
+        }
+        function result (computerChoice, playerChoice){
+            if (computerChoice === "ROCK" && playerChoice === "SCISSORS" || computerChoice === "PAPER" && playerChoice === "ROCK" || computerChoice === "SCISSORS" && playerChoice === "PAPER") {
+                console.log(`You Lose! ${computerChoice} beats ${playerChoice}`)
+                ++round
+                ++computerScore
+            } else if (playerChoice === "ROCK" && computerChoice === "SCISSORS" || playerChoice === "PAPER" && computerChoice=== "ROCK" || playerChoice === "SCISSORS" && computerChoice === "PAPER") {
+                console.log(`You win! ${playerChoice} beats ${computerChoice}`)
+                ++round
+                ++playerScore
+            } else {
+                console.log(`It's a draw ${computerChoice} and ${playerChoice}`)
+                ++round
+                ++draw
+                
+            }
+    }
+    
+        
+        
+       
+        
+        
+    
 
     </script>
 </body>
