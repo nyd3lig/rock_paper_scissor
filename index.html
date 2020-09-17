@@ -58,7 +58,7 @@
                 printResult.textContent = `You win! ${playerScore} | ${computerScore}`
             } else if (round === 5 && playerScore < computerScore) {
                 printResult.textContent = `You lose, LOSER!! ${playerScore} | ${computerScore}`
-            } else {
+            } else if (round === 5) {
                 printResult.textContent = `It's a draw! ${playerScore} | ${computerScore}`
             }
         }
