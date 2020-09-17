@@ -5,9 +5,11 @@
     <title>Document</title>
 </head>
 <body>
-    <p> use the consol <br>
-    game() to start a round<br>
-    the only supported words are rock, paper and scissors</p>
+    <div id="printResult"></div>
+    <button id="btnRock">ROCK</button>
+    <button id="btnPaper">PAPER</button>
+    <button id="btnScissors">SCISSORS</button>
+
     <script>
         let round = 0;
         let computerScore = 0;
@@ -15,11 +17,11 @@
         let draw = 0;
         let playerChoice;
         let computerChoice;
-
+       
+      
     //Game function
         function game () {
         getComputerSelection()
-        playerSelection()
         result(computerChoice, playerChoice)
         playRound()
 
@@ -38,38 +40,65 @@
             
         }
     //Generates player choice
-        function playerSelection () {
-            playerChoice = window.prompt(playerChoice);
-            playerChoice = playerChoice.toUpperCase();
-            return playerChoice
+        function playerSelectionRock () {
+            return playerChoice = "ROCK";
+            
+          }
+        function playerSelectionPaper () {
+            return playerChoice = "PAPER";
+            
+        }
+        function playerSelectionScissors () {
+            return playerChoice = "SCISSORS";
+            
         }
     //Increments score
         function playRound(){
-            if (round <= 5) {
-                console.log(`round ${round} is done, the score is \n
-                computer: ${computerScore} \n
-                player: ${playerScore} \n
-                draw: ${draw}`)
+            if (round === 5 && playerScore > computerScore) {
+                printResult.textContent = `You win! ${playerScore} | ${computerScore}`
+            } else if (round === 5 && playerScore < computerScore) {
+                printResult.textContent = `You lose, LOSER!! ${playerScore} | ${computerScore}`
+            } else {
+                printResult.textContent = `It's a draw! ${playerScore} | ${computerScore}`
             }
         }
         function result (computerChoice, playerChoice){
             if (computerChoice === "ROCK" && playerChoice === "SCISSORS" || computerChoice === "PAPER" && playerChoice === "ROCK" || computerChoice === "SCISSORS" && playerChoice === "PAPER") {
-                console.log(`You Lose! ${computerChoice} beats ${playerChoice}`)
-                ++round
                 ++computerScore
+                printResult.textContent = `You Lose! ${computerChoice} beats ${playerChoice} | score: ${playerScore} | ${computerScore}`
+                ++round
+                
             } else if (playerChoice === "ROCK" && computerChoice === "SCISSORS" || playerChoice === "PAPER" && computerChoice=== "ROCK" || playerChoice === "SCISSORS" && computerChoice === "PAPER") {
-                console.log(`You win! ${playerChoice} beats ${computerChoice}`)
-                ++round
                 ++playerScore
-            } else {
-                console.log(`It's a draw ${computerChoice} and ${playerChoice}`)
+                printResult.textContent = `You win! ${playerChoice} beats ${computerChoice} | score: ${playerScore} | ${computerScore}`
                 ++round
+               
+            } else {
                 ++draw
+                printResult.textContent = `It's a draw ${computerChoice} and ${playerChoice} | score: ${playerScore} | ${computerScore}`;
+                ++round
+                
                 
             }
     }
     
-        
+    const btnRock = document.querySelector("#btnRock");
+    btnRock.addEventListener('click', playerSelectionRock);
+    btnRock.addEventListener('click', game)
+
+    const btnPaper = document.querySelector("#btnPaper");
+    btnPaper.addEventListener('click', playerSelectionPaper);
+    btnPaper.addEventListener('click', game)
+
+    const btnScissors = document.querySelector("#btnScissors");
+    btnScissors.addEventListener('click', playerSelectionScissors);
+    btnScissors.addEventListener('click', game);
+    
+    const printResult = document.querySelector("#printResult")
+    
+    
+   
+       
         
        
         
