@@ -4,11 +4,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    #container {
+        text-align: center;
+        margin-top: 150px;
+    }
+    #printResult {
+        
+        
+        margin: auto;
+        border-radius: 10px;
+        
+        
+        
+    }
+    button {
+        margin-top: 25px;
+    }
+</style>
 <body>
+    <div id="container">
     <div id="printResult"></div>
     <button id="btnRock">ROCK</button>
     <button id="btnPaper">PAPER</button>
     <button id="btnScissors">SCISSORS</button>
+    </div>
 
     <script>
         let round = 0;
@@ -21,6 +41,9 @@
       
     //Game function
         function game () {
+            if (round === 5) {
+                return;
+            }
         getComputerSelection()
         result(computerChoice, playerChoice)
         playRound()
