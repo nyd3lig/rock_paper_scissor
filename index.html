@@ -2,132 +2,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<style>
-    #container {
-        text-align: center;
-        margin-top: 150px;
-    }
-    #printResult {
-        
-        
-        margin: auto;
-        border-radius: 10px;
-        
-        
-        
-    }
-    button {
-        margin-top: 25px;
-    }
-</style>
 <body>
+    <header>
+    <h1>Rock Paper Scissors Game</h1>
+    <p>Play 5 rounds of rock paper scissors against the computer</p>
+    </header>
     <div id="container">
-    <div id="printResult"></div>
-    <button id="btnRock">ROCK</button>
-    <button id="btnPaper">PAPER</button>
-    <button id="btnScissors">SCISSORS</button>
-    </div>
-
-    <script>
-        let round = 0;
-        let computerScore = 0;
-        let playerScore = 0;
-        let draw = 0;
-        let playerChoice;
-        let computerChoice;
-       
-      
-    //Game function
-        function game () {
-            if (round === 5) {
-                return;
-            }
-        getComputerSelection()
-        result(computerChoice, playerChoice)
-        playRound()
-
-    }
-    //Generates computer choice
-        function getComputerSelection () {
-            computerNumber = Math.floor(Math.random() * 3);
-            if (computerNumber === 0) {
-                return computerChoice = "ROCK";
-            } else if (computerNumber === 1) {
-                return computerChoice = "SCISSORS";
-            } else {
-                return computerChoice = "PAPER";
-            }
+        <div class="printResultContainer">
             
-            
-        }
-    //Generates player choice
-        function playerSelectionRock () {
-            return playerChoice = "ROCK";
-            
-          }
-        function playerSelectionPaper () {
-            return playerChoice = "PAPER";
-            
-        }
-        function playerSelectionScissors () {
-            return playerChoice = "SCISSORS";
-            
-        }
-    //Increments score
-        function playRound(){
-            if (round === 5 && playerScore > computerScore) {
-                printResult.textContent = `You win! ${playerScore} | ${computerScore}`
-            } else if (round === 5 && playerScore < computerScore) {
-                printResult.textContent = `You lose, LOSER!! ${playerScore} | ${computerScore}`
-            } else if (round === 5) {
-                printResult.textContent = `It's a draw! ${playerScore} | ${computerScore}`
-            }
-        }
-        function result (computerChoice, playerChoice){
-            if (computerChoice === "ROCK" && playerChoice === "SCISSORS" || computerChoice === "PAPER" && playerChoice === "ROCK" || computerChoice === "SCISSORS" && playerChoice === "PAPER") {
-                ++computerScore
-                printResult.textContent = `You Lose! ${computerChoice} beats ${playerChoice} | score: ${playerScore} | ${computerScore}`
-                ++round
-                
-            } else if (playerChoice === "ROCK" && computerChoice === "SCISSORS" || playerChoice === "PAPER" && computerChoice=== "ROCK" || playerChoice === "SCISSORS" && computerChoice === "PAPER") {
-                ++playerScore
-                printResult.textContent = `You win! ${playerChoice} beats ${computerChoice} | score: ${playerScore} | ${computerScore}`
-                ++round
+            <div id="score">
+                <p class="roundNumber" class="block">
+                    Round: 0
+                </p>
+                <div id="printResult"></div>
+                <hr>
                
-            } else {
-                ++draw
-                printResult.textContent = `It's a draw ${computerChoice} and ${playerChoice} | score: ${playerScore} | ${computerScore}`;
-                ++round
-                
-                
-            }
-    }
-    
-    const btnRock = document.querySelector("#btnRock");
-    btnRock.addEventListener('click', playerSelectionRock);
-    btnRock.addEventListener('click', game)
-
-    const btnPaper = document.querySelector("#btnPaper");
-    btnPaper.addEventListener('click', playerSelectionPaper);
-    btnPaper.addEventListener('click', game)
-
-    const btnScissors = document.querySelector("#btnScissors");
-    btnScissors.addEventListener('click', playerSelectionScissors);
-    btnScissors.addEventListener('click', game);
-    
-    const printResult = document.querySelector("#printResult")
-    
-    
-   
-       
-        
-       
-        
-        
-    
-
-    </script>
+                <p class="playerScore">
+                    Player Score: 0
+                </p>
+                <p class="computerScore">
+                    Computer Score: 0
+                </p>
+                <p class="drawScore">
+                    Draws: 0
+                </p>
+            </div>
+            
+        </div>
+        <button id="btnRock">ROCK</button>
+        <button id="btnPaper">PAPER</button>
+        <button id="btnScissors">SCISSORS</button>
+    </div>
 </body>
+<script src="script.js"></script>
 </html>
